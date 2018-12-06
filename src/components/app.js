@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import AlertList from './AlertList'
-import AlertSimpleManager from './AlertSimpleManager';
+import AlertListContainer from '../containers/AlertListContainer'
+import AlertSimpleManagerContainer from '../containers/AlertSimpleManagerContainer';
 
 export default class App extends Component {
   render() {
     return (
       <div>
-          React simple starter
-        <AlertList />
-        <AlertSimpleManager />
+          <h1>Simple app for showing alerts in React + Redux</h1>
+        <AlertListContainer />
+        <AlertSimpleManagerContainer />
       </div>
     );
   }

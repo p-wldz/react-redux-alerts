@@ -5,19 +5,21 @@ export default class AlertList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            alerts: [
-                {
-                    messageType: 'danger',
-                    messageText: 'First alert'
-                },
-                {
-                    messageType: 'success',
-                    messageText: 'Second alert, success!'
-                },
-            ]
+            alerts: this.props.alerts
         }
     }
+    componentWillReceiveProps({alerts}) {
+        this.setState(
+            {
+                alerts
+            }
+        );
+    }
     render(){
+        if (this.state.alerts.length == 0)
+        {
+            return <div><i>Please, add new message..</i></div>
+        }
         return (
             <div>
                 <div className="bd-example">
@@ -25,7 +27,6 @@ export default class AlertList extends Component {
                             <Alert key={index} alert={alert}/>
                         )
                     )}
-
                 </div>
             </div>
         );

@@ -7,12 +7,20 @@ export default class AlertSimpleManager extends Component {
             message: ""
         };
         this.addSuccessMessage = this.addSuccessMessage.bind(this);
+        this.addDangerMessage = this.addDangerMessage.bind(this);
         this.changeValues = this.changeValues.bind(this);
     }
-    addSuccessMessage(e)
+    onSubmit(e)
     {
         e.preventDefault();
-        console.log("Test");
+    }
+    addSuccessMessage()
+    {
+        this.props.addMessage(this.state.message, "success");
+    }
+    addDangerMessage()
+    {
+        this.props.addMessage(this.state.message, "danger");
     }
     changeValues(e)
     {
@@ -23,9 +31,16 @@ export default class AlertSimpleManager extends Component {
     render(){
         return (
             <div>
-                <form onSubmit={this.addSuccessMessage}>
-                    <input type="text" onChange={this.changeValues} name="message" value={this.state.message} />
-                    <button type="submit" className="btn btn-primary">Add new success message</button>
+                <form onSubmit={this.onSubmit}>
+                    <div className="form-group">
+                        <label htmlFor="message">Write message..</label>
+                        <input type="text" onChange={this.changeValues} className="form-control" id="message" name="message" value={this.state.message} />
+                    </div>
+                    <div className="form-group">
+                        <button type="submit" onClick={this.addSuccessMessage} className="btn btn-primary">Add new success message</button>
+                        <button type="submit" onClick={this.addDangerMessage} className="btn btn-warning">Add new danger message</button>
+                    </div>
+
                 </form>
             </div>
         );
