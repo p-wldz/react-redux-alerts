@@ -9,10 +9,12 @@ export default class AlertSimpleManager extends Component {
         this.addSuccessMessage = this.addSuccessMessage.bind(this);
         this.addDangerMessage = this.addDangerMessage.bind(this);
         this.changeValues = this.changeValues.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
     }
     onSubmit(e)
     {
         e.preventDefault();
+        this.setState({ message: "" });
     }
     addSuccessMessage()
     {
